@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nahuel Ibarra | Ilustrador</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Luxurious+Script&family=Basic&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --ink: #67140f;
+            --ink-mid: #8a3a35;
+            --ink-soft: #b07470;
+            --cream: #f5d8d8;
+            --cream-warm: #eecece;
+            --gold: #b89d6a;
+            --gold-light: #d4bc8f;
+            --white: #fbdbdb;
+            --border: rgba(103,20,15,0.15);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--white);
+            color: var(--ink);
+            overflow-x: hidden;
+        }
+
+        /* ── HEADER ── */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 0 3rem;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(251,219,219,0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 300;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--ink);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--ink-mid);
+            transition: color 0.2s;
+        }
+
+        nav a:hover { color: var(--gold); }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding-top: 70px;
+        }
+
+        .hero-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 6rem 5rem 6rem 6rem;
+            background: var(--cream);
+        }
+
+        .hero-eyebrow {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-name {
+            font-family: 'Luxurious Script', cursive;
+            font-size: clamp(4.5rem, 8vw, 7rem);
+            font-weight: 400;
+            font-style: normal;
+            line-height: 1.05;
+            color: var(--ink);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-name em {
+            font-style: italic;
+            color: var(--ink-mid);
+        }
+
+        .hero-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 300;
+            font-style: italic;
+            color: var(--ink-soft);
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-divider {
+            width: 40px;
+            height: 1px;
+            background: var(--gold);
+            margin-bottom: 2rem;
+        }
+
+        .hero-desc {
+            font-family: 'Basic', sans-serif;
+            font-size: 0.9rem;
+            line-height: 1.85;
+            color: var(--ink-mid);
+            max-width: 380px;
+            margin-bottom: 3rem;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--white);
+            background: var(--ink);
+            padding: 1rem 2.2rem;
+            transition: background 0.25s;
+            width: fit-content;
+        }
+
+        .btn-primary:hover { background: var(--gold); }
+
+        .hero-visual {
+            background: var(--ink);
+            position: relative;
+            overflow: hidden;
+            min-height: 500px;
+        }
+
+        .hero-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.75;
+            display: block;
+        }
+
+        .hero-visual-overlay {
+            position: absolute;
+            bottom: 3rem;
+            right: 3rem;
+            text-align: right;
+        }
+
+        .hero-visual-tag {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            border: 1px solid var(--gold);
+            padding: 0.45rem 1rem;
+        }
+
+        /* ── SECTION BASE ── */
+        section { padding: 7rem 0; }
+
+        .container {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        .section-label {
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            font-weight: 300;
+            line-height: 1.1;
+            color: var(--ink);
+            margin-bottom: 3.5rem;
+        }
+
+        /* ── PORTFOLIO ── */
+        #portfolio {
+            background: var(--white);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            background: var(--cream-warm);
+            cursor: pointer;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease, opacity 0.4s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.04);
+            opacity: 0.5;
+        }
+
+        .portfolio-info {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2rem;
+            background: linear-gradient(to top, rgba(103,20,15,0.7) 0%, transparent 60%);
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+
+        .portfolio-item:hover .portfolio-info {
+            opacity: 0;
+        }
+
+        .portfolio-item-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 0.75rem;
+            opacity: 0;
+            transition: opacity 0.35s;
+        }
+
+        .portfolio-item:hover .portfolio-item-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-item-overlay span {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--ink);
+            background: var(--white);
+            padding: 0.6rem 1.4rem;
+        }
+
+        .portfolio-cat {
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold-light);
+        }
+
+        .portfolio-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 300;
+            color: var(--white);
+        }
+
+        /* ── ABOUT ── */
+        #acerca {
+            background: var(--cream);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .about-img-wrap {
+            position: relative;
+        }
+
+        .about-img-wrap img {
+            width: 100%;
+            display: block;
+            filter: grayscale(20%);
+        }
+
+        .about-img-accent {
+            position: absolute;
+            top: -1.5rem;
+            left: -1.5rem;
+            width: 100%;
+            height: 100%;
+            border: 1px solid var(--gold);
+            z-index: -1;
+        }
+
+        .about-body p {
+            font-size: 0.95rem;
+            line-height: 1.9;
+            color: var(--ink-mid);
+            margin-bottom: 1.2rem;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+            padding-top: 2.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .stat-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 300;
+            color: var(--ink);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+            margin-top: 0.3rem;
+        }
+
+        /* ── CONTACT ── */
+        #contacto {
+            background: var(--white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: start;
+        }
+
+        .testimonials {
+            margin-top: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .testimonial {
+            padding-left: 1.5rem;
+            border-left: 2px solid var(--gold);
+        }
+
+        .testimonial-stars {
+            color: var(--gold);
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.6rem;
+        }
+
+        .testimonial-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            font-style: italic;
+            line-height: 1.7;
+            color: var(--ink-mid);
+            margin-bottom: 0.5rem;
+        }
+
+        .testimonial-author {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+        }
+
+        /* Form */
+        .form-note {
+            font-size: 0.8rem;
+            color: var(--ink-soft);
+            margin-bottom: 2rem;
+        }
+
+        .form-note a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-field label {
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+        }
+
+        .form-field input,
+        .form-field select,
+        .form-field textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            color: var(--ink);
+            background: var(--cream);
+            border: 1px solid var(--border);
+            border-radius: 0;
+            outline: none;
+            transition: border-color 0.2s;
+            appearance: none;
+        }
+
+        .form-field input:focus,
+        .form-field select:focus {
+            border-color: var(--gold);
+        }
+
+        .form-field select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a7568' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            cursor: pointer;
+        }
+
+        .phone-row {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 1rem;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.1rem;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--white);
+            background: var(--ink);
+            border: none;
+            cursor: pointer;
+            transition: background 0.25s;
+            margin-top: 0.5rem;
+        }
+
+        .submit-btn:hover { background: var(--gold); }
+
+        .legal {
+            font-size: 0.75rem;
+            line-height: 1.6;
+            color: var(--ink-soft);
+            margin-top: 1.2rem;
+        }
+
+        .legal a { color: var(--gold); text-decoration: none; }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--ink);
+            padding: 2.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        footer p {
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            color: var(--ink-soft);
+        }
+
+        .footer-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            font-weight: 300;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: rgba(251,219,219,0.4);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            header { padding: 0 1.5rem; }
+            nav ul { gap: 1.5rem; }
+            .hero { grid-template-columns: 1fr; }
+            .hero-text { padding: 5rem 2rem 4rem; }
+            .hero-visual { min-height: 350px; }
+            .container { padding: 0 1.5rem; }
+            .portfolio-grid { grid-template-columns: 1fr 1fr; gap: 1px; }
+            .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .about-img-accent { display: none; }
+            footer { flex-direction: column; gap: 1rem; text-align: center; }
+        }
+
+        @media (max-width: 580px) {
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .form-grid { grid-template-columns: 1fr; }
+            .phone-row { grid-template-columns: 1fr; }
+        }
+
+        /* ── ANIMATIONS ── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-eyebrow { animation: fadeUp 0.6s ease both; }
+        .hero-name    { animation: fadeUp 0.7s 0.1s ease both; }
+        .hero-subtitle{ animation: fadeUp 0.7s 0.2s ease both; }
+        .hero-divider { animation: fadeUp 0.7s 0.3s ease both; }
+        .hero-desc    { animation: fadeUp 0.7s 0.35s ease both; }
+        .btn-primary  { animation: fadeUp 0.7s 0.45s ease both; }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <a href="#" class="logo" style="color: #67140f">Nahuel Ibarra</a>
+    <nav>
+        <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#acerca">Acerca de mí</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-text">
+        <p class="hero-eyebrow">Ilustrador Freelancer · Buenos Aires</p>
+        <h1 class="hero-name">Nahuel Ibarra</h1>
+        <p class="hero-subtitle" style="color: #5e4e4d">Arte que narra entre sombra y luz</p>
+        <div class="hero-divider"></div>
+        <p class="hero-desc">Ilustrador especializado en fantasía, simbolismo y la tensión visual entre el bien y el mal. Cada pieza es una narrativa construida con música, intuición y detalle.</p>
+        <a href="#portfolio" class="btn-primary">Ver portfolio</a>
+    </div>
+    <div class="hero-visual">
+        <img src="ilustrador.jpg" alt="Nahuel Ibarra">
+        <div class="hero-visual-overlay">
+            <span class="hero-visual-tag">Disponible para proyectos</span>
+        </div>
+    </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+    <div class="container">
+        <p class="section-label">Trabajos seleccionados</p>
+        <h2 class="section-title">Portfolio</h2>
+    </div>
+    <div class="portfolio-grid">
+        <a href="tonos-de-grises.html" class="portfolio-item" style="display:block;text-decoration:none;">
+            <img src="img/arlequinn.jpg" alt="Ilustraciones en tonos de grises">
+            <div class="portfolio-info">
+                <p class="portfolio-name">Ilustraciones en tonos de grises</p>
+            </div>
+            <div class="portfolio-item-overlay">
+                <span>Ver serie</span>
+            </div>
+        </a>
+        <a href="ilustraciones-a-color.html" class="portfolio-item" style="display:block;text-decoration:none;">
+            <img src="img/weedsterman.jpg" alt="Ilustraciones a color">
+            <div class="portfolio-info">
+                <p class="portfolio-name">Ilustraciones a color</p>
+            </div>
+            <div class="portfolio-item-overlay">
+                <span>Ver serie</span>
+            </div>
+        </a>
+        <a href="proyectos.html" class="portfolio-item" style="display:block;text-decoration:none;">
+            <img src="img/tarot.jpg" alt="Proyectos">
+            <div class="portfolio-info">
+                <p class="portfolio-name">Proyectos</p>
+            </div>
+            <div class="portfolio-item-overlay">
+                <span>Ver proyecto</span>
+            </div>
+        </a>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="acerca">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-img-wrap">
+                <img src="ilustrador.jpg" alt="Nahuel Ibarra trabajando">
+                <div class="about-img-accent"></div>
+            </div>
+            <div class="about-body">
+                <p class="section-label">Sobre el artista</p>
+                <h2 class="section-title">Acerca de mí</h2>
+                <p style="font-family:'Basic',sans-serif;">Soy Nahuel Ibarra, ilustrador freelancer de Buenos Aires, Argentina. Me apasiona crear imágenes inspiradas en la fantasía, los mundos simbólicos y la lucha entre el bien y el mal.</p>
+                <p style="font-family:'Basic',sans-serif;">La música es una influencia constante en mi trabajo: me ayuda a construir atmósferas y narrativas visuales que van más allá de la imagen.</p>
+                <p style="font-family:'Basic',sans-serif;">Cuento además con experiencia como programador en la Universidad de Palermo (2022), lo que me permite integrar lo artístico con lo digital de manera única.</p>
+                <div class="about-stats">
+                    <div>
+                        <div class="stat-num" id="stat-years">+0</div>
+                        <div class="stat-label">Años de experiencia</div>
+                    </div>
+                    <div>
+                        <div class="stat-num" id="stat-projects">+0</div>
+                        <div class="stat-label">Proyectos realizados</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contacto">
+    <div class="container">
+        <div class="contact-grid">
+            <div>
+                <p class="section-label">Trabajemos juntos</p>
+                <h2 class="section-title">Contacto</h2>
+                <div class="testimonials">
+                    <div class="testimonial">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">"Nahuel es el ilustrador ideal para materializar tus ideas más complejas."</p>
+                        <p class="testimonial-author">— Pochi Garcia</p>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">"Excelente calidad artística a un precio muy competitivo."</p>
+                        <p class="testimonial-author">— Pepe Sand</p>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <p class="form-note">¿Ya eres cliente? <a href="#">Obtén soporte de cuenta aquí</a></p>
+
+                <form action="tu_script_de_procesamiento.php" method="POST">
+                    <div class="form-grid">
+                        <div class="form-field">
+                            <label>Nombre</label>
+                            <input type="text" name="first_name" placeholder="Nombre" required>
+                        </div>
+                        <div class="form-field">
+                            <label>Apellido</label>
+                            <input type="text" name="last_name" placeholder="Apellido" required>
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <label>Correo electrónico</label>
+                        <input type="email" name="work_email" placeholder="tu@email.com" required>
+                    </div>
+
+                    <div class="form-field">
+                        <label>Empresa / Proyecto</label>
+                        <input type="text" name="company" placeholder="Empresa o Freelance" required>
+                    </div>
+
+                    <div class="form-field">
+                        <label>Teléfono</label>
+                        <div class="phone-row">
+                            <select name="country_code" required>
+                                <option value="" disabled selected>Código</option>
+                                <option value="+54">+54 Argentina</option>
+                                <option value="+598">+598 Uruguay</option>
+                            </select>
+                            <input type="tel" name="phone" placeholder="Número de teléfono" required>
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <label>Idioma preferido</label>
+                        <select name="language" required>
+                            <option value="Español" selected>Español</option>
+                            <option value="English">English</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Elegir horario de consulta</button>
+                </form>
+
+                <p class="legal">
+                    Mi equipo (ex VIL Ilustraciones) utilizará tu información solo para proporcionar el servicio solicitado. Puedes darte de baja en cualquier momento. Más info en la <a href="politica_privacidad.html">Política de Privacidad</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <span class="footer-brand" style="color: rgb(212 153 78)">Nahuel Ibarra</span>
+    <p style="color: rgb(212 153 78)">© 2026 · Todos los derechos reservados</p>
+</footer>
+
+<script>
+    function animateCounter(el, target, duration) {
+        let start = 0;
+        const step = target / (duration / 16);
+        const update = () => {
+            start += step;
+            if (start >= target) {
+                el.textContent = '+' + target;
+                return;
+            }
+            el.textContent = '+' + Math.floor(start);
+            requestAnimationFrame(update);
+        };
+        requestAnimationFrame(update);
+    }
+
+    const statsSection = document.querySelector('.about-stats');
+    let triggered = false;
+
+    const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && !triggered) {
+            triggered = true;
+            animateCounter(document.getElementById('stat-years'), 6, 1200);
+            animateCounter(document.getElementById('stat-projects'), 80, 1800);
+        }
+    }, { threshold: 0.5 });
+
+    observer.observe(statsSection);
+</script>
+</body>
+</html>
